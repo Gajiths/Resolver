@@ -1,0 +1,46 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:context="http://www.springframework.org/schema/context"
+xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+                    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd     
+                    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+ 	<!-- Scan the web package and  To auto detect @Controller annotated controllers  -->
+ 	<mvc:resources location="/public/" mapping="/resources/**"/>   
+ 
+ 	<mvc:annotation-driven/>
+	<context:component-scan base-package="com.bharp.inventry.web" />
+	
+	
+	
+	<!-- Load config.properties for configuration information -->
+	<context:property-placeholder location="classpath:/config.properties" />
+
+	<!-- Tiles Configuration(Template) -->
+	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+    <property name="definitions">
+        <list>
+            <value>/WEB-INF/pages/Templates/template.xml</value>
+        </list>
+    </property>
+    </bean>
+    <!-- Tiles solver  to resolve with the jsps and Tiles-->
+	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
+		<property name="order" value="0"></property>
+	</bean> 
+	
+	<!-- DataBase Configuartion -->
+ 	<bean id="dataSource" 
+      class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+      <property name="driverClassName" value="${jdbc_driver_class}"/>
+      <property name="url" value="${jdbc_url}"/>
+      <property name="username" value="${jdbc_username}"/>
+      <property name="password" value="${jdbc_password}"/>
+   </bean>
+   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+    	<constructor-arg ref="dataSource"/>    
+   </bean>  
+    
+</beans>
