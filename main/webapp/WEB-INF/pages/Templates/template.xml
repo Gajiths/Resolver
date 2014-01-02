@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.1//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
+<tiles-definitions>
+	<definition name="main_layout" template="/WEB-INF/pages/Templates/base_layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/pages/header.jsp" /> 
+		<put-attribute name="html_head" value="" /> 
+		<put-attribute name="title" value="SivaLabs" />
+  		<put-attribute name="left_column" value="" />
+  		<put-attribute name="right_column" value="" />
+		<put-attribute name="footer" value="/WEB-INF/pages/footer.jsp" />
+	</definition>
+	
+	<definition name="index" extends="main_layout">
+	 	<put-attribute name="title" value="Resolver : Login" />
+	  	<put-attribute name="left_column" value="/WEB-INF/pages/index.jsp" />
+ 	</definition>
+   
+ 	<definition name="success" extends="main_layout">
+	  	<put-attribute name="title" value="Resolver : success" />
+	 	<put-attribute name="right_column" value="/WEB-INF/pages/success.jsp" />
+ 	</definition>
+   
+   <definition name="error" extends="main_layout">
+	  	<put-attribute name="title" value="Resolver :error" />
+	  	<put-attribute name="left_column" value="/WEB-INF/pages/error.jsp" />
+ 	</definition>
+ 	
+ 	 <definition name="user_sign_up" extends="main_layout">
+	  	<put-attribute name="title" value="Resolver :Register" />
+	  	<put-attribute name="left_column" value="/WEB-INF/pages/user_sign_up.jsp" />
+ 	</definition>
+ 	
+ 	<definition name="app_front" extends="main_layout">
+	  	<put-attribute name="title" value="Resolver :App" />
+	  	<put-attribute name="right_column" value="/WEB-INF/pages/app_front.jsp" />
+ 	</definition>
+</tiles-definitions>
+
