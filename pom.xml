@@ -8,7 +8,7 @@
   <name>Inventry1 Maven Webapp</name>
   <url>http://maven.apache.org</url>
   
-  <properties>
+  		<properties>
                 <spring.version>3.2.4.RELEASE</spring.version>
                 <tiles.version>2.2.2</tiles.version>
                 <spring.security.version>3.0.5.RELEASE</spring.security.version>
@@ -148,6 +148,8 @@
                 <artifactId>commons-digester</artifactId> 
                 <version>1.8</version> 
                 </dependency>
+                
+  
                    
                   </dependencies>
                   
@@ -177,6 +179,14 @@
                                         <password>admin</password>
                                 </configuration>
                     </plugin>
+                    
+                     <plugin>            
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-war-plugin</artifactId>
+  <configuration>
+    <webXml>main\webapp\WEB-INF\web.xml</webXml>        
+  </configuration>
+</plugin>
             </plugins>
   </build>
 </project>
